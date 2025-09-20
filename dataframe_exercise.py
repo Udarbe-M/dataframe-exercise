@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNZ7yENeU858Xh8IoRiO009",
+      "authorship_tag": "ABX9TyP1BYnT5rZ705FPpjeQ4qbW",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -811,6 +811,54 @@
             "4      1005  Laptop  Electronics         1    850    Ethan  North    850\n",
             "14     1015  Laptop  Electronics         5    750    Oscar   East   3750\n",
             "North orders: 4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Filtering Specific Values\n",
+        "\n",
+        "# Step 1: Sales in West region\n",
+        "west_sales = df[df[\"Region\"] == \"West\"]\n",
+        "print(west_sales)\n",
+        "\n",
+        "# Step 2: Sales by Alice\n",
+        "alice_sales = df[df[\"Customer\"] == \"Alice\"]\n",
+        "print(alice_sales)\n",
+        "\n",
+        "# Step 3: Sales of Laptop or Printer\n",
+        "subset_sales = df[df[\"Product\"].isin([\"Laptop\", \"Printer\"])]\n",
+        "print(subset_sales)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sv6ZoLNQx4X6",
+        "outputId": "94aa5727-842b-4c8a-b24c-364ef089705b"
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "    OrderID     Product     Category  Quantity  Price Customer Region  Total\n",
+            "3      1004     Monitor  Electronics         4    200    Diana   West    800\n",
+            "7      1008       Chair    Furniture         2    150   Hannah   West    300\n",
+            "11     1012    Keyboard  Accessories         4     55    Laura   West    220\n",
+            "15     1016  Headphones  Accessories         3     35     Paul   West    105\n",
+            "19     1020       Chair    Furniture         6    180      Tom   West   1080\n",
+            "Empty DataFrame\n",
+            "Columns: [OrderID, Product, Category, Quantity, Price, Customer, Region, Total]\n",
+            "Index: []\n",
+            "    OrderID  Product     Category  Quantity  Price Customer Region  Total\n",
+            "4      1005   Laptop  Electronics         1    850    Ethan  North    850\n",
+            "10     1011  Printer  Electronics         2    120     Kyle   East    240\n",
+            "14     1015   Laptop  Electronics         5    750    Oscar   East   3750\n",
+            "18     1019  Printer  Electronics         1    110    Sarah   East    110\n"
           ]
         }
       ]
