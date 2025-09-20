@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyP1BYnT5rZ705FPpjeQ4qbW",
+      "authorship_tag": "ABX9TyO7qebjsFBEHWWhi0ITrVeW",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -862,6 +862,103 @@
           ]
         }
       ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Updating Values Based on Condition\n",
+        "\n",
+        "\n",
+        "# Step 1: Increase Price of Furniture by 10%\n",
+        "df.loc[df[\"Category\"] == \"Furniture\", \"Price\"] *= 1.10\n",
+        "\n",
+        "# Step 2: Recalculate Total\n",
+        "df[\"Total\"] = df[\"Quantity\"] * df[\"Price\"]\n",
+        "\n",
+        "# Step 3: Show only Furniture rows\n",
+        "print(df[df[\"Category\"] == \"Furniture\"])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LQVv3fauysof",
+        "outputId": "b64ab84e-02f0-470f-fc90-4483e89445c6"
+      },
+      "execution_count": 34,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "    OrderID Product   Category  Quantity  Price Customer Region   Total\n",
+            "7      1008   Chair  Furniture         2  181.5   Hannah   West   363.0\n",
+            "8      1009    Desk  Furniture         1  363.0      Ian  North   363.0\n",
+            "16     1017    Desk  Furniture         2  338.8    Queen  North   677.6\n",
+            "19     1020   Chair  Furniture         6  217.8      Tom   West  1306.8\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Sorting the DataFrame\n",
+        "\n",
+        "# Step 1: Sort by Total descending\n",
+        "sorted_df = df.sort_values(by=\"Total\", ascending=False)\n",
+        "print(sorted_df.head())\n",
+        "\n",
+        "# Step 2: Show top 5 sales\n",
+        "print(sorted_df.head())\n",
+        "\n",
+        "# Step 3: Multi-level sort (Region then Customer)\n",
+        "multi_sort = df.sort_values(by=[\"Region\", \"Customer\"])\n",
+        "print(multi_sort.head())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "CCJH6PrFzQDQ",
+        "outputId": "f4841251-c6e5-482f-f439-cc50a73231c6"
+      },
+      "execution_count": 35,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "    OrderID  Product     Category  Quantity  Price Customer Region   Total\n",
+            "14     1015   Laptop  Electronics         5  750.0    Oscar   East  3750.0\n",
+            "19     1020    Chair    Furniture         6  217.8      Tom   West  1306.8\n",
+            "17     1018  Monitor  Electronics         4  220.0   Robert  South   880.0\n",
+            "4      1005   Laptop  Electronics         1  850.0    Ethan  North   850.0\n",
+            "3      1004  Monitor  Electronics         4  200.0    Diana   West   800.0\n",
+            "    OrderID  Product     Category  Quantity  Price Customer Region   Total\n",
+            "14     1015   Laptop  Electronics         5  750.0    Oscar   East  3750.0\n",
+            "19     1020    Chair    Furniture         6  217.8      Tom   West  1306.8\n",
+            "17     1018  Monitor  Electronics         4  220.0   Robert  South   880.0\n",
+            "4      1005   Laptop  Electronics         1  850.0    Ethan  North   850.0\n",
+            "3      1004  Monitor  Electronics         4  200.0    Diana   West   800.0\n",
+            "    OrderID   Product     Category  Quantity  Price Customer Region   Total\n",
+            "2      1003  Keyboard  Accessories         3   50.0  Charlie   East   150.0\n",
+            "6      1007     Mouse  Accessories        10   25.0   George   East   250.0\n",
+            "10     1011   Printer  Electronics         2  120.0     Kyle   East   240.0\n",
+            "14     1015    Laptop  Electronics         5  750.0    Oscar   East  3750.0\n",
+            "18     1019   Printer  Electronics         1  110.0    Sarah   East   110.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "akEQ9tVCzRSu"
+      },
+      "execution_count": null,
+      "outputs": []
     }
   ]
 }
